@@ -1,0 +1,11 @@
+# Local tooling and editor state
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.DS_Store
+Thumbs.db
+
+# Release archives belong on GitHub Releases, not the repository tip
+The_World_v*_full.zip
