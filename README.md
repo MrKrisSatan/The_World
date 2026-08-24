@@ -1,634 +1,190 @@
-# 🌍 The World
+# The World
 
-**The World** is an ambitious simulation and expansion mod for **gen1recomp**, designed to make Pokémon Red, Blue, Yellow, and Gold feel less like static adventures and more like living Pokémon worlds.
+> A living, multi-region Pokémon campaign for Gen1Recomp++.
+> Your rivals do not wait for you. The world keeps moving.
 
-Instead of every save following exactly the same script, The World creates autonomous trainers, changing weather, rival careers, Team Rocket activity, Pokémon Rangers, dynamic relationships, weather variants, expanded Pokémon mechanics, and events that can happen whether the player is there to witness them or not.
+[![Latest release](https://img.shields.io/github/v/release/MrKrisSatan/The_World?label=latest&color=gold)](https://github.com/MrKrisSatan/The_World/releases/latest)
+[![Supported games](https://img.shields.io/badge/games-Red%20%7C%20Blue%20%7C%20Yellow%20%7C%20Gold%20%7C%20Silver%20%7C%20Crystal-3b82f6)](#supported-games)
+[![Gen1Recomp++](https://img.shields.io/badge/host-Gen1Recomp%2B%2B-7c3aed)](https://github.com/bryanthaboi/gen1recomp)
 
-> **Your rivals aren't waiting for you. The world keeps moving.**
+**Current release: 6.54.15**
 
----
+[Download the latest release](https://github.com/MrKrisSatan/The_World/releases/latest) ·
+[Installation](docs/INSTALLATION.md) ·
+[Features](docs/FEATURES.md) ·
+[Compatibility](docs/COMPATIBILITY.md) ·
+[Report a bug](https://github.com/MrKrisSatan/The_World/issues/new?template=bug_report.yml)
 
-## 🎮 Supported Games
+The World expands Pokémon Red, Blue, Yellow, Gold, Silver, and Crystal into a
+connected campaign spanning Kanto, Johto, the Sevii Islands, Almia, Sinnoh,
+and Hoenn. It combines authored regional progression with autonomous trainers,
+dynamic weather and seasons, WX Pokémon, modern optional mechanics, scripted
+world events, achievements, transportation networks, and persistent factions.
 
-The World is designed for:
+## Highlights
 
-- Pokémon Red
-- Pokémon Blue
-- Pokémon Yellow
-- Pokémon Gold
+- Start in any supported region and complete regions in any order.
+- Explore six regional campaigns with towns, routes, buildings, interiors,
+  Gyms, caves, transport links, Elite Four challenges, and scripted events.
+- Encounter autonomous AI rivals who travel, catch and train Pokémon, earn
+  regional badges, challenge each Elite Four, and pursue their own careers.
+- Experience Team Rocket operations, Pokémon Ranger responses, rival
+  relationships, tournaments, world news, ecology, and regional incidents.
+- Use the embedded Weather FX system with seasons, battle weather, terrain
+  effects, 2D/3D presentation, and weather-dependent WX Pokémon.
+- Track 632 categorized achievements and 48 regional badges/seals through
+  dedicated Start-menu screens.
+- Configure live convenience settings from **Start → QOL OPTIONS**, including
+  seasonal notices, achievement popups, the Gen 1 EXP bar, AI simulation,
+  weather presentation, and encounter ownership.
+- Travel between regions by appropriate ships, trains, aircraft, and physical
+  HM-gated connections.
 
-The goal is feature parity between Gen 1 and Gen 2 wherever the underlying game allows it.
+## Supported games
 
----
+| Game | Support |
+| --- | --- |
+| Pokémon Red | Full Gen 1 host path |
+| Pokémon Blue | Full Gen 1 host path |
+| Pokémon Yellow | Full Gen 1 host path; Pikachu/WX Pikachu starter policy |
+| Pokémon Gold | Full Gen 2 host path |
+| Pokémon Silver | Full Gen 2 host path |
+| Pokémon Crystal | Full Gen 2/Crystal host path |
 
-# 🌎 A Living Pokémon World
+The manifest supports Gen1Recomp++ host versions `>=0.1.37` and `<2.0.0`.
 
-The central idea behind The World is simple:
+## The regions
 
-**No two saves should tell exactly the same story.**
+| Region | Campaign role | Visual foundation |
+| --- | --- | --- |
+| Kanto | Native campaign plus custom districts | Native Kanto tilesets preserved |
+| Johto | Native/imported regional campaign | Native Johto tilesets preserved |
+| Sevii Islands | Island circuit, services, routes, and League content | Host Kanto/Johto tileset approximations |
+| Almia | Ranger-focused regional campaign | Host Kanto/Johto tileset approximations |
+| Sinnoh | Regional Gyms, story and League progression | Host Kanto/Johto tileset approximations |
+| Hoenn | Regional Gyms, story and League progression | Host Kanto/Johto tileset approximations |
 
-AI-controlled trainers exist independently of the player.
+Generated regions intentionally use only tilesets supplied by the active host.
+Kanto and Johto retain their native map tilesets.
 
-They can:
+## Living-world simulation
 
-- Travel through the world
-- Catch Pokémon
-- Train their teams
-- Battle NPC trainers
-- Battle each other
-- Earn Gym Badges
-- Evolve Pokémon
-- Learn moves
-- Trade Pokémon
-- Use the Wonder Trader
-- Build friendships and rivalries
-- Become stronger or fall behind
-- Change careers
-- Join or oppose Team Rocket
-- Participate in tournaments
-- Pursue quests
-- React to weather
-- Encounter WX Pokémon
-- Eventually challenge the Pokémon League
+Persistent rivals are trainers participating in the same world rather than a
+sequence of fixed boss fights. Depending on their personality, class,
+relationships, resources, and recent history, they can:
 
-Rivals can progress up to several badges ahead of or behind the player, but they must actually travel through the world and complete their journeys rather than simply being teleported forward.
+- travel between regions and towns;
+- catch, train, evolve, trade, and lose Pokémon;
+- challenge NPCs, other rivals, Gyms, tournaments, and regional Leagues;
+- form friendships, rivalries, alliances, and grudges;
+- pursue careers and quests or become involved with Team Rocket;
+- react to weather, ecology, thefts, Rangers, and world events;
+- black out and run to the nearest Pokémon Center when out of usable Pokémon.
 
----
+The first-install flow lets an existing save decide whether rivals should
+simulate all regions or visited regions only.
 
-# 🧑‍🤝‍🧑 AI Rivals
+## Weather, seasons, and WX Pokémon
 
-At the beginning of a save you can decide how populated you want your world to be.
+Weather FX is embedded directly into The World. Weather can change encounters,
+battles, move behavior, terrain bonuses, AI decisions, quests, and regional
+ecology. Seasonal weighting follows the configured clock and hemisphere.
 
-You can even select:
+WX Pokémon are persistent weather-associated forms with their own appearance,
+typing, encounter conditions, and supported starter/tutor behavior. They can
+be disabled independently without invalidating WX Pokémon already stored in a
+save.
 
-**ZERO RIVALS**
+Version 6.54.15 restores the location-and-season HUD on clear frames and gives
+achievement unlocks compact, gold-framed presentation plaques.
 
-for a more traditional Pokémon experience.
+## Starters and progression
 
-When enabled, rivals are persistent autonomous trainers with their own:
+- Yellow always starts with exactly one Pikachu-family Pokémon, including a WX
+  Pikachu when the WX choice is enabled.
+- Red, Blue, Gold, Silver, and Crystal receive an appropriate starter for the
+  selected starting region.
+- Pokémon-generation scope and the intro WX choice are respected when the
+  starter is generated.
+- AI rivals begin in the same region as the player.
+- Regional HMs are obtainable and Gym-gated within each campaign, with
+  traversable alternatives and transport links between regions.
 
-- Names
-- Appearance
-- Personality
-- Trainer class
-- Background
-- Pokémon
-- Money
-- Relationships
-- Happiness
-- Goals
-- Progress
-- Reputation
-- Life path
+## Installation
 
-They aren't merely recurring boss battles.
+1. Open the [latest release](https://github.com/MrKrisSatan/The_World/releases/latest).
+2. Download `The_World_v6_54_15_full.zip`.
+3. Import or extract it using the normal Gen1Recomp++ mod workflow. The folder
+   containing `manifest.json` must be the mod root.
+4. Enable **The World** in Mod Manager, then start or load a supported game.
+5. Back up an important save before upgrading a large, actively developed mod.
 
-They're trainers playing the game alongside you.
+See [the complete installation and upgrade guide](docs/INSTALLATION.md).
 
----
+## Compatibility
 
-## 🧠 Rival Personalities
+The World absorbs several formerly separate projects. Do not enable standalone
+copies of the following alongside it:
 
-Rivals can receive personalities inspired by a wide range of character archetypes and fictional genres.
+- Weather FX
+- AI Rivals
+- Kanto Reforged
+- National Dex
+- Wonder Trade
+- GameShark
+- Double Battles
 
-Personality affects things such as:
+The manifest also contains optional integration paths for popular sprite,
+voxel, UI, encounter, randomizer, and content mods. See the
+[compatibility guide](docs/COMPATIBILITY.md) before combining large overhauls.
 
-- Battle aggression
-- Pokémon preferences
-- Catching behaviour
-- Risk tolerance
-- Team Rocket susceptibility
-- Relationships
-- Trading
-- Training priorities
-- Quest decisions
-- Career choices
+## Save compatibility
 
-One example is the **Crusader**.
+The World keeps expanded species, forms, moves, and items registered where
+needed so disabling an optional mechanic does not make existing save data
+unreadable. Existing-save onboarding records per-save choices for AI, regional
+simulation, and weather.
 
-Crusaders are exceptionally aggressive battlers, strongly religious in their dialogue and worldview, and completely incorruptible by Team Rocket.
+Back up saves before major upgrades. When reporting a migration problem, state
+both the previous and current The World versions.
 
-Personality combines with background and trainer class so two rivals with the same sprite or starter can still develop very differently.
+## Reporting problems
 
----
+Use the [bug report form](https://github.com/MrKrisSatan/The_World/issues/new?template=bug_report.yml)
+and include:
 
-# 😊 Rival Happiness
+- game and Gen1Recomp++ version;
+- The World version;
+- new save or migrated save;
+- current region and exact map;
+- enabled optional mods;
+- relevant QOL/weather/WX settings;
+- reproduction steps;
+- screenshots and the complete Lua error or `lua-error.log`, when available.
 
-Rivals have their own evolving emotional state.
+## Development status
 
-Positive events can improve happiness:
+The World is an active, large-scale mod. New-region content, cross-generation
+behavior, runtime NPCs, map transitions, and persistent simulation interact in
+ways that ordinary content replacements do not. Reproducible bug reports are
+especially valuable.
 
-- Catching Pokémon
-- Winning battles
-- Earning badges
-- Evolving Pokémon
-- Successful trades
-- Completing objectives
-- Forming friendships
+Release 6.54.15 passes the project release gate, Lua 5.1 syntax validation,
+module-resolution audit, and the 37-check regional completion harness.
 
-Negative events can reduce it:
+## Credits
 
-- Repeated defeats
-- Pokémon fainting frequently
-- Losing important battles
-- Having Pokémon stolen
-- Team Rocket attacks
-- Rival conflicts
-- Failing important goals
+The World incorporates and adapts work from AI Rivals, Weather FX, Kanto
+Reforged, and the bundled Kanto/Johto foundations. Battle backdrops include work
+credited to CDRX73, DerxwnaKapsyla, http404error, and Game Freak. Weather audio
+uses the credited Relic Castle tutorial pack and royalty-free Pixabay sources.
+The 3D atmosphere integration is adapted from Kanto Dynamic Weather by Campo
+(`1-Camp0-1`). Additional notices remain bundled with the distributed mod.
 
-Happiness can influence behaviour, relationships and future decisions.
-
----
-
-# 🎓 Trainer Classes
-
-The World introduces trainer classes for both the player and AI trainers.
-
-Unlike personality, a **class provides mechanical advantages and disadvantages**.
-
-The basic Trainer class is neutral, while specialised classes trade strengths for weaknesses.
-
-Traits can affect mechanics such as:
-
-- Battle rewards
-- Experience gain
-- Money
-- Catch rates
-- Dodging
-- Rare encounters
-- Pokémon DVs
-- Damage
-- Training
-- Weather
-- Team building
-
-Classes are also assigned to:
-
-- Rivals
-- Team Rocket
-- Pokémon Rangers
-
-This means AI trainers operate under many of the same rules as the player.
-
----
-
-# 🚀 Team Rocket Simulation
-
-Team Rocket has its own autonomous simulation.
-
-Every save can produce different:
-
-- Rocket leaders
-- Recruits
-- Operations
-- Strengths
-- Failures
-- Victories
-- Territories
-- Recruitment attempts
-- Rival infiltrations
-- Pokémon thefts
-
-Rocket members can:
-
-- Travel through the world
-- Battle trainers
-- Ambush rivals
-- Steal Pokémon
-- Use stolen Pokémon
-- Sell Pokémon
-- Trade with other Rocket members
-- Use the Wonder Trader
-- Gain promotions
-- Suffer demotions
-- Pursue missions
-- Recruit rivals
-- Potentially abandon Team Rocket
-
-A rival might become one of your greatest allies in one save and a Rocket administrator in another.
+Pokémon and related names and imagery belong to their respective owners. This
+is a fan-made project and is not affiliated with or endorsed by Nintendo,
+Creatures Inc., or GAME FREAK.
 
 ---
 
-# 🥷 Team Rocket Disguise
-
-The player can obtain a **Team Rocket Uniform**.
-
-### Red / Blue / Yellow
-
-The uniform becomes available following the Pokémon Tower storyline.
-
-### Gold
-
-The uniform can be discovered in the **Mahogany Town Rocket Hideout**.
-
-The uniform functions as a toggleable Key Item.
-
-While wearing it:
-
-- The player appears as a Team Rocket member
-- Rocket NPCs treat the player as friendly
-- Rocket missions become available
-- Rocket members can sell items to the player
-- Stolen Pokémon may be offered for sale
-- Rocket Balls can be purchased
-
----
-
-# ⚫ Rocket Balls
-
-Rocket Balls are illegal specialised Poké Balls capable of capturing Pokémon that already belong to another trainer.
-
-When disguised as Team Rocket, the player can participate directly in Pokémon theft.
-
-Rocket NPCs can also steal Pokémon from other simulated trainers and subsequently:
-
-- Keep them
-- Battle with them
-- Trade them
-- Sell them
-- Sell them to the disguised player
-
-This connects Pokémon ownership directly to the larger world simulation.
-
----
-
-# 🛡️ Pokémon Rangers
-
-Pokémon Rangers form another autonomous faction.
-
-Rangers can:
-
-- Travel
-- Catch Pokémon
-- Train
-- Battle
-- Investigate Team Rocket
-- Respond to environmental events
-- Participate in weather-related missions
-- Use the Wonder Trader
-
-Their goals frequently conflict with Team Rocket, allowing faction stories to emerge without being directly scripted around the player.
-
----
-
-# 🌦️ Dynamic Weather
-
-The Weather FX system is integrated directly into The World.
-
-Weather can affect:
-
-- Routes
-- Battles
-- Pokémon encounters
-- Pokémon variants
-- Status conditions
-- Damage
-- AI decisions
-- Quests
-- Seasonal conditions
-
-The system supports overworld and battle weather effects.
-
-Seasons can be derived from the device date, allowing weather probabilities to change throughout the year.
-
----
-
-# 🧬 WX Pokémon
-
-Weather can produce unusual **WX Pokémon**, specialised Pokémon variants associated with particular environmental conditions.
-
-WX Pokémon can feature altered:
-
-- Types
-- Appearance
-- Encounter conditions
-- Battle properties
-
-Examples might only appear during conditions such as:
-
-- Rain
-- Snow
-- Fog
-- Smog
-- Storms
-- Extreme heat
-
-WX Pokémon can be disabled independently of normal weather.
-
-When WX Pokémon are enabled, eligible starter Pokémon can also receive WX variants.
-
----
-
-# 🥚 Expanded Starters
-
-The starter system can include additional Pokémon.
-
-Potential starters include Pokémon such as:
-
-- Pikachu
-- Eevee
-- Clefairy
-
-Gold additionally supports:
-
-- Chikorita
-- Cyndaquil
-- Totodile
-
-When WX starters are enabled, compatible starters can appear as weather variants.
-
-Starter selection can also be influenced by trainer personality.
-
----
-
-# 🧪 Scientists & Weather Research
-
-Scientists can generate research-oriented quests connected to the weather simulation.
-
-Possible objectives include:
-
-- Investigating unusual weather
-- Studying WX Pokémon
-- Finding rare environmental encounters
-- Tracking weather anomalies
-- Recovering research
-- Investigating Rocket interference
-
-Team Rocket can pursue competing objectives involving the same systems.
-
-A strange storm therefore has the potential to attract scientists, Rangers, rivals and Rocket operatives for completely different reasons.
-
----
-
-# 🔄 Wonder Trader
-
-The Wonder Trader isn't restricted to the player.
-
-It can also be used by:
-
-- Rivals
-- Team Rocket
-- Pokémon Rangers
-
-This introduces another source of unpredictability into AI teams.
-
-A rival disappearing with an ordinary team may return later carrying something completely unexpected.
-
----
-
-# 📞 RivalGear & Trainer Contacts
-
-The World includes its own communication system designed to avoid conflicting with Gold's native Pokégear.
-
-Not every NPC trainer automatically hands over their number.
-
-NPC trainers may require:
-
-- Multiple battles
-- Rematches
-- Increased familiarity
-- Random opportunities
-
-before becoming contacts.
-
-Rivals follow a similar relationship-based system, although every persistent rival can eventually become a contact.
-
-Contacts can support rematches, communication and world events.
-
----
-
-# 📰 World News
-
-Important simulation events can appear through the news system.
-
-Reports can include events such as:
-
-- Rival captures
-- Gym victories
-- Major battles
-- Team Rocket activity
-- Pokémon theft
-- Ranger activity
-- Weather events
-- Rival career changes
-- Tournament results
-
-Events can therefore happen outside the player's immediate location while still becoming part of that save's history.
-
----
-
-# 🏆 Dynamic Pokémon League
-
-AI rivals can eventually reach the Pokémon League.
-
-If a rival becomes Champion, the world reacts rather than simply deleting the original Champion from the story.
-
-Champion status becomes part of the simulation, allowing the League to evolve alongside the rival population.
-
----
-
-# 🧬 Gen 1, Gen 2 & Gen 3 Content
-
-The World incorporates expanded Pokémon content and mechanics from **Kanto Reforged**.
-
-The options menu allows the player to choose the desired Pokémon pool:
-
-### GEN 1
-Pokémon #001–151
-
-### GEN 1 + GEN 2
-Pokémon #001–251
-
-### GEN 1 + GEN 2 + GEN 3
-Pokémon #001–386
-
-Expanded content includes support for:
-
-- Pokémon
-- Moves
-- Sprites
-- Palettes
-- Pokédex information
-- Evolutions
-- Learnsets
-- Abilities
-- Held items
-
-Content remains registered internally where necessary to protect save compatibility.
-
----
-
-# ⚔️ Optional Modern Mechanics
-
-Several expanded mechanics can be individually enabled or disabled.
-
-Options include:
-
-**Abilities**
-- ON
-- OFF
-
-**Held Items**
-- ON
-- OFF
-
-**Gen 2/3 Moves**
-- ON
-- OFF
-
-**Expanded Types**
-- Dark
-- Steel
-- Fairy
-
-This allows players to build anything from a relatively traditional Gen 1 experience to a much more mechanically expanded game.
-
----
-
-# ⚙️ Modular World Configuration
-
-The World is intended to be modular.
-
-You don't have to use everything.
-
-For example:
-
-### AI World
-AI Trainers: ON  
-Weather: OFF
-
-### Weather World
-AI Trainers: OFF  
-Weather: ON
-
-### Classic Weather
-AI Trainers: OFF  
-Weather: ON  
-WX Pokémon: OFF
-
-### Living World
-AI Trainers: ON  
-Weather: ON  
-WX Pokémon: ON
-
-### Near Vanilla
-AI Trainers: OFF  
-Weather: OFF
-
-Additional controls include:
-
-- Rival population
-- Weather intensity
-- Weather quality
-- WX Pokémon
-- Pokémon generation
-- Abilities
-- Held items
-- Expanded moves
-- Expanded types
-- Rival relationships
-- Rival life paths
-- News ticker
-- Rocket activity
-- Simulation performance
-
----
-
-# 🎭 Every Save Is Its Own Timeline
-
-The World is ultimately about emergent stories.
-
-In one save:
-
-> A rival catches an unusual Pokémon during a storm, defeats Brock before you arrive, befriends another rival and eventually becomes Champion.
-
-In another:
-
-> The same rival loses repeatedly, becomes unhappy, abandons the Gym challenge and is eventually recruited by Team Rocket.
-
-Elsewhere:
-
-> Rocket steals a rival's strongest Pokémon. Rangers investigate. Another rival intervenes. The stolen Pokémon changes hands twice before appearing on somebody else's championship team.
-
-None of those stories need to happen in the next save.
-
-That's the point.
-
----
-
-# 📦 Installation
-
-The World is built as a mod for the **gen1recomp** ecosystem.
-
-Install the mod through the normal gen1recomp mod installation process and enable **The World** from the Mod Manager.
-
-Because several formerly separate systems are now integrated directly into The World, avoid installing obsolete standalone versions of those same components unless a release specifically states they are compatible.
-
-Always back up important saves before testing development releases.
-
----
-
-# 🧪 Development Status
-
-The World is a large and rapidly evolving project.
-
-Systems involving autonomous trainers, runtime NPC spawning, cross-generation compatibility and persistent simulation are considerably more complex than conventional content mods.
-
-Bug reports are extremely valuable.
-
-When reporting a problem, please include:
-
-- Game version: Red / Blue / Yellow / Gold
-- The World version
-- Location
-- What happened immediately before the problem
-- Whether AI Trainers are enabled
-- Whether Weather is enabled
-- Whether WX Pokémon are enabled
-- Pokémon generation setting
-- Screenshot of any Lua error
-- Reproduction steps where possible
-
----
-
-# 💾 Save Compatibility
-
-The World attempts to keep expanded content registered even when individual mechanics are disabled.
-
-This helps prevent situations where turning off a feature makes an existing Pokémon, move or item impossible for the game to understand.
-
-Nevertheless, this remains an actively developed mod.
-
-**Back up your saves when moving between major versions.**
-
----
-
-# 🗺️ The Philosophy
-
-Traditional Pokémon games largely wait for the player.
-
-The rival waits.
-
-Team Rocket waits.
-
-Gym Leaders wait.
-
-The Champion waits.
-
-**The World doesn't.**
-
-Your rivals have journeys of their own.
-
-Team Rocket has plans of its own.
-
-Rangers have problems to solve.
-
-Weather changes.
-
-Pokémon migrate and appear under unusual conditions.
-
-Someone may become Champion before you're ready.
-
-The world keeps turning.
-
-Welcome to **The World**. 🌍
+Traditional Pokémon games wait for the player. **The World does not.**
