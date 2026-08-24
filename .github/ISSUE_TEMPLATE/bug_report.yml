@@ -1,0 +1,107 @@
+name: Bug report
+description: Report a reproducible problem in The World
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve The World. Please remove ROM or personal data from attachments.
+  - type: input
+    id: world-version
+    attributes:
+      label: The World version
+      placeholder: 6.54.15
+    validations:
+      required: true
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game
+      options:
+        - Red
+        - Blue
+        - Yellow
+        - Gold
+        - Silver
+        - Crystal
+    validations:
+      required: true
+  - type: input
+    id: host-version
+    attributes:
+      label: Gen1Recomp++ version
+    validations:
+      required: true
+  - type: dropdown
+    id: save-type
+    attributes:
+      label: Save type
+      options:
+        - New save created on this version
+        - Migrated save from an older The World version
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: previous-version
+    attributes:
+      label: Previous The World version, if migrated
+  - type: input
+    id: location
+    attributes:
+      label: Region and exact map
+      placeholder: Almia — Vientown
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other enabled mods and versions
+      description: Write None if The World is the only enabled mod.
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Relevant settings
+      description: Include AI, regional simulation, weather, WX, encounter ownership, and display settings when relevant.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      placeholder: |
+        1. Load the save in...
+        2. Enter...
+        3. Interact with...
+        4. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: Complete Lua error or lua-error.log
+      render: text
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or additional context
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I tested the latest release with a clean The World installation.
+          required: true
